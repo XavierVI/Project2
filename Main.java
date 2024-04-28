@@ -45,7 +45,6 @@ public class Main {
     // Test with empty array
     int[] emptyArr = {};
     BT emptyTree = BT.buildTree(emptyArr);
-    System.out.print("\nBuild tree test with empty array: ");
     if(emptyTree.toString().equals("Node(-1, Nil, Nil)")) {
       passing++;
     } 
@@ -53,14 +52,17 @@ public class Main {
     // Test with non-empty array
     int[] arr = {3, 1, 4, 2};
     BT tree = BT.buildTree(arr);
-    System.out.print("\nBuild tree test with non-empty array: ");
     if(tree.toString().equals("Node(3, Node(1, Nil, Node(2, Nil, Nil)), Node(4, Nil, Nil))")){
       passing++;
     }
 
-    System.out.println("Passed " + passing + " out of 2 tests");
+    int[] arr2 = {12, 3, 1, 4, 2, 5, 6, 7};
+    BT tree2 = BT.buildTree(arr2);
+    if(tree2.toString().equals("Node(12, Node(3, Node(1, Nil, Node(2, Nil, Nil)), Node(4, Nil, Nil)), Node(5, Nil, Node(6, Nil, Node(7, Nil, Nil))))")){
+      passing++;
+    }
 
-
+    System.out.println("Passed " + passing + " out of 3 tests");
     
   }
 
