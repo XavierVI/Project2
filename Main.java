@@ -4,6 +4,17 @@ public class Main {
     printTreeTest();
     heightTest();
     isBSTTest();
+    // deletionTest();
+  }
+
+  private static void deletionTest() {
+    BT nil = Nil.getNil();
+    BT tree = new Node(27, new Node(20, new Node(1, nil, nil), new Node(5, nil, nil)), new Node(30, nil, nil));
+
+    System.out.print("\nDeletion test: ");
+    System.out.println(tree);
+    BT.delete(20, (Node) tree);
+    System.out.println(tree);
   }
 
   private static void printTreeTest() {

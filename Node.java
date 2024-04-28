@@ -9,10 +9,26 @@ public class Node extends BT {
     this.right = right;
   }
 
+  @Override
   public int height() {
     int leftHeight = left.height();
     int rightHeight = right.height();
     return (leftHeight < rightHeight ? rightHeight : leftHeight) + 1;
+  }
+
+  @Override
+  public int num() {
+    return num;
+  }
+
+  @Override
+  public BT left() {
+    return left;
+  }
+
+  @Override
+  public BT right() {
+    return right;
   }
 
   public boolean isBST(BT input, int min, int max) {

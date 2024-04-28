@@ -10,6 +10,18 @@ public class Nil extends BT {
     return nil;
   }
 
+  public int num() {
+    return -1;
+  }
+
+  public BT left() {
+    return Nil.getNil();
+  }
+
+  public BT right() {
+    return Nil.getNil();
+  }
+
   public int height() {
     return -1;
   }
