@@ -14,6 +14,10 @@ public class Main {
     System.out.print("\nTree string test: ");
     System.out.println(tree.toString().equals("Node(3, Node(1, Nil, Node(4, Nil, Nil)), Node(2, Nil, Nil))"));
 
+    System.out.println("\nBuild tree tests: \n ----------------------------------------------------\n");
+    buildTreeTests();
+    System.out.println("\n ----------------------------------------------------\n");
+
   }
 
   private static void heightTest(){
@@ -53,12 +57,13 @@ public class Main {
     int[] arr = {3, 1, 4, 2};
     BT tree = BT.buildTree(arr);
     if(tree.toString().equals("Node(3, Node(1, Nil, Node(2, Nil, Nil)), Node(4, Nil, Nil))")){
+
       passing++;
     }
 
     int[] arr2 = {12, 3, 1, 4, 2, 5, 6, 7};
     BT tree2 = BT.buildTree(arr2);
-    if(tree2.toString().equals("Node(12, Node(3, Node(1, Nil, Node(2, Nil, Nil)), Node(4, Nil, Nil)), Node(5, Nil, Node(6, Nil, Node(7, Nil, Nil))))")){
+    if(tree2.toString().equals("Node(12, Node(3, Node(1, Nil, Node(2, Nil, Nil)), Node(4, Nil, Node(5, Nil, Node(6, Nil, Node(7, Nil, Nil))))), Nil)")){ 
       passing++;
     }
 
