@@ -2,24 +2,26 @@ abstract class BT {
   public abstract int height();
 
   public static Node buildTree(int [] arr){
-    Node root = null;
-    for(int i = 0; i < arr.length; i++){
-      root = insert(arr[i], root);
+    Node root = new Node(arr[0], Nil.getNil(), Nil.getNil());
+    for(int i = 1; i < arr.length; i++){
+      insert(arr[i], root);
     }
     return root;
-
 
   }
-  public static Node insert (int num, Node root){
-    if(root == null){
-      return new Node(num, null, null);
-    }
+  public static void insert (int num, Node root){
     if(num < root.num){
-      root.left = insert(num, (Node) root.left);
-    }else if(num > root.num){
-      root.right = insert(num, (Node) root.right);
+      if(root.left instanceof Nil){
+        root.left = new Node(num, Nil.getNil(), Nil.getNil());
+      }else{
+        insert(num, (Node)root.left);
+      }
+    }else{
+      if(root.right instanceof Nil){
+        root.right = new Node(num, Nil.getNil(), Nil.getNil());
+      }else{
+        insert(num, (Node)root.right);
+      }
     }
-    return root;
-   
   }
 }
