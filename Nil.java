@@ -14,6 +14,10 @@ public class Nil extends BT {
     return -1;
   }
 
+  public boolean isBST(BT input, int min, int max) {
+    return true;
+  }
+
   public String toString() {
     return "Nil";
   }

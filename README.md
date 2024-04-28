@@ -10,7 +10,7 @@
   - If both children are the **Nil** node, it will return true.
   - Otherwise, it will recursively call itself on the left and right children.
 
-#### [] Write a static method in the BT class. It takes an array of integer values and creates a **binary search tree** by consecutively inserting these values to an empty tree (Nil). The method is required to return a reference of a Node object. You need to implement a helper function for inserting a new node to a binary search tree. 
+#### [X] Write a static method in the BT class. It takes an array of integer values and creates a **binary search tree** by consecutively inserting these values to an empty tree (Nil). The method is required to return a reference of a Node object. You need to implement a helper function for inserting a new node to a binary search tree. 
 
 #### [] Write a method to delete the node which has the given key. We assume that the binary tree is a binary search tree.
 **Notes and ideas**:

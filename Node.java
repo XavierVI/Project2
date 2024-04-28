@@ -15,6 +15,48 @@ public class Node extends BT {
     return (leftHeight < rightHeight ? rightHeight : leftHeight) + 1;
   }
 
+  public boolean isBST(BT input, int min, int max) {
+    if (input == null || input instanceof Nil) {
+      return true; // nil case
+    } else if (input instanceof Node) {
+      Node node = (Node) input;
+      int val = node.num;
+
+      if (val < min || val > max) {
+        // System.out.println("\n-----------------");
+        // System.out.println("Was False Because:");
+        // System.out.println("val: " + val);
+        // System.out.println("min: " + min);
+        // System.out.println("max: " + max);
+        // System.out.println("-----------------\n");
+        return false;
+      }
+
+      // System.out.println("\n-----------------");
+      // System.out.println("Current");
+
+      // System.out.println("-----------------");
+      // System.out.println("Recursive recursing");
+      // System.out.println("Left");
+      // System.out.println(node.left.toString());
+      // System.out.println("Right");
+      // System.out.println(node.right.toString());
+      // System.out.println("Min: " + min);
+      // System.out.println("Max: " + max);
+      // System.out.println("-----------------\n");
+
+      // Recurse
+      return isBST(node.left, min, node.num - 1) &&
+        isBST(node.right, node.num + 1, max);
+    } else {
+      // System.out.println("\n-----------------");
+      // System.out.println("Was False Because:");
+      // System.out.println("Hit the other false");
+      // System.out.println("-----------------\n");
+      return false;
+    }
+  }
+
   @Override
   public String toString() {
     if(height() == 0) return String.format("Node(%d, Nil, Nil)",num);
