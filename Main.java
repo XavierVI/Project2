@@ -13,6 +13,7 @@ public class Main {
 
     System.out.print("\nTree string test: ");
     System.out.println(tree.toString().equals("Node(3, Node(1, Nil, Node(4, Nil, Nil)), Node(2, Nil, Nil))"));
+
   }
 
   private static void heightTest(){
@@ -39,4 +40,29 @@ public class Main {
     System.out.print("\nIs BST test with empty tree: ");
     System.out.println(emptyTree.isBST(emptyTree, Integer.MIN_VALUE, Integer.MAX_VALUE) == true);
   }
+  public static void buildTreeTests() {
+    int passing = 0;
+    // Test with empty array
+    int[] emptyArr = {};
+    BT emptyTree = BT.buildTree(emptyArr);
+    System.out.print("\nBuild tree test with empty array: ");
+    if(emptyTree.toString().equals("Node(-1, Nil, Nil)")) {
+      passing++;
+    } 
+
+    // Test with non-empty array
+    int[] arr = {3, 1, 4, 2};
+    BT tree = BT.buildTree(arr);
+    System.out.print("\nBuild tree test with non-empty array: ");
+    if(tree.toString().equals("Node(3, Node(1, Nil, Node(2, Nil, Nil)), Node(4, Nil, Nil))")){
+      passing++;
+    }
+
+    System.out.println("Passed " + passing + " out of 2 tests");
+
+
+    
+  }
+
+
 }
