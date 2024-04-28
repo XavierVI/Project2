@@ -7,6 +7,8 @@ abstract class BT {
    * @return root node of the tree
    */
   public static Node buildTree(int [] arr){
+    if(arr.length == 0) return new Node(-1, Nil.getNil(), Nil.getNil());
+
     Node root = new Node(arr[0], Nil.getNil(), Nil.getNil());
     for(int i = 1; i < arr.length; i++){
       insert(arr[i], root);
