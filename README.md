@@ -1,4 +1,4 @@
-# Tasks
+# Tasks 👄
 #### [X] Override the method toString in the Node class, such that the structure of the binary tree can be translated to the following string format: **Node(num, string_of_left_subtree, string_of_right_subtree)**. For example, the tree showed above is translated to the string **Node(3, Node(1, Nil, Node(4, Nil, Nil)), Node(2, Nil, Nil))**.
 - Already implemented in the Node class using recursion.
 
