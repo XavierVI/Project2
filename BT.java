@@ -11,13 +11,13 @@ abstract class BT {
   }
   public static void insert (int num, Node root){
     if(num < root.num){
-      if(root.left instanceof Nil){
+      if(root.left == Nil.getNil()){
         root.left = new Node(num, Nil.getNil(), Nil.getNil());
       }else{
         insert(num, (Node)root.left);
       }
     }else{
-      if(root.right instanceof Nil){
+      if(root.right == Nil.getNil()){
         root.right = new Node(num, Nil.getNil(), Nil.getNil());
       }else{
         insert(num, (Node)root.right);
