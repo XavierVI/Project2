@@ -4,6 +4,9 @@ abstract class BT {
   public abstract int num();
   public abstract BT left();
   public abstract BT right();
+  public abstract void setNum(int num);
+  public abstract void setLeft(BT left);
+  public abstract void setRight(BT right);
 
   public abstract boolean isBST(BT input, int min, int max);
 
@@ -44,11 +47,22 @@ abstract class BT {
     }
   }
 
-  /* 
+  /* This method searches for the node with the given key
+   * and removes it from the tree.
    * 
+   * @param key the key of the node to remove
+   * @param treeRoot the root of the BST
    */
   public static void delete(int key, BT treeRoot) {
     BT z = search(key,treeRoot);
+    if(z.num() == treeRoot.num()) { // if the node to be deleted is the root
+      BT newRoot = (z.right() instanceof Nil) ? z.left() : 
+                   (z.left() instanceof Nil) ? z.right() : treeMin(z.right());
+      int temp = newRoot.num();
+      delete(temp, treeRoot);
+      treeRoot.setNum(temp); // replace the root's value with the new root's value
+      return;
+    }
     if(z.left() instanceof Nil) {
       transplant(z, z.right(), treeRoot);
     }
@@ -57,48 +71,33 @@ abstract class BT {
     }
     else { // both are not nil
       BT y = treeMin(z.right());
-      BT yRight = y.right();
-      BT yLeft = y.left();
-      BT yRightParent = findParent(y.right().num(), treeRoot);
-      BT yLeftParent = findParent(y.left().num(), treeRoot);
 
       if(y.num() != z.right().num()) {
-        transplant(y,y.right(),z);
-        yRight = z.right();
-        yRightParent = y;
+        transplant(y,y.right(),treeRoot);
+        y.setRight(z.right());
       }
       transplant(z, y, treeRoot);
-      yLeft = z.left();
-      yLeftParent = y;
+      y.setLeft(z.left());
     }
   }
 
-  /* Helper method for delete()
-   * Sorts out the tree after the node is deleted.
-   * 
-   * You need the parent to u and v, thus you would need
-   * to call search() twice.
-   */
+  /* Helper method for delete(), moves subtrees around. */
   private static void transplant(BT u, BT v, BT treeRoot) {
     BT uParent = findParent(u.num(), treeRoot);
-    BT vParent = findParent(u.num(), treeRoot);
-    BT uParentLeft = uParent.left();
-    BT uParentRight = uParent.right();
 
     // if there is no parent, set the root node to v
-    if(uParent == null) { // => there is no parent
-      treeRoot = v; // replace root node with v
-    }
-    // else, if the deleted node is in the left child of the parent
-    else if(u.num() == uParentLeft.num()) {
-      uParentLeft = v; // set the parent's left child to v
+    // if(uParent instanceof Nil) { // => there is no parent
+    //   int temp = v.num();
+    //   delete(v.num(), treeRoot);
+    //   u.setNum(temp);
+    // }
+    // if the deleted node is in the left child of the parent
+    if(u.num() == uParent.left().num()) {
+      uParent.setLeft(v); // set the parent's left child to v
     }
     // else the deleted node is in the right subtree of the parent
     else {
-      uParentRight = v;
-    }
-    if(v instanceof Nil) {
-      vParent = uParent;
+      uParent.setRight(v);
     }
   }
 
@@ -112,17 +111,18 @@ abstract class BT {
    */
   private static BT search(int key, BT root) {
     if(root.num() == key) return root;
-    else if(root.num() < key) return search(key,(Node) root.right());
-    else if(root.num() > key) return search(key,(Node) root.left());
-    return null;
+    else if(root.num() < key) return search(key, root.right());
+    else if(root.num() > key) return search(key, root.left());
+    return Nil.getNil();
   }
 
+  /* Helper method for delete(). Locates the parent of the node with the given key. */
   private static BT findParent(int key, BT root) {
     BT left = root.left();
     BT right = root.right();
     if(left.num() == key || right.num() == key) return root;
-    else if(root.num() < key) return findParent(key,(Node) root.right());
-    else if(root.num() > key) return findParent(key,(Node) root.left());
+    else if(root.num() < key) return findParent(key, root.right());
+    else if(root.num() > key) return findParent(key, root.left());
     return Nil.getNil();
   }
 }

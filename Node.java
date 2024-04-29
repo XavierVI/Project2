@@ -31,6 +31,21 @@ public class Node extends BT {
     return right;
   }
 
+  @Override
+  public void setNum(int num) {
+    this.num = num;
+  }
+
+  @Override
+  public void setLeft(BT left) {
+    this.left = left;
+  }
+
+  @Override
+  public void setRight(BT right) {
+    this.right = right;
+  }
+
   public boolean isBST(BT input, int min, int max) {
     if (input == null || input instanceof Nil) {
       return true; // nil case
@@ -75,7 +90,7 @@ public class Node extends BT {
 
   @Override
   public String toString() {
-    if(height() == 0) return String.format("Node(%d, Nil, Nil)",num);
+    if(height() <= 0) return String.format("Node(%d, Nil, Nil)",num);
     return String.format("Node(%d, %s, %s)",
                          num,left.toString(),right.toString());    
   }

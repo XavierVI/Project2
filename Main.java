@@ -1,20 +1,38 @@
+import java.util.ArrayList;
+
 public class Main {
 
   public static void main(String[] args) {
     printTreeTest();
     heightTest();
     isBSTTest();
-    // deletionTest();
+    deletionTest();
   }
 
   private static void deletionTest() {
+    ArrayList<BT> trees = new ArrayList<BT>();
     BT nil = Nil.getNil();
-    BT tree = new Node(27, new Node(20, new Node(1, nil, nil), new Node(5, nil, nil)), new Node(30, nil, nil));
+    // case (a)
+    BT tree1 = new Node(5, nil, new Node(7, nil, new Node(20, nil, nil)));
+    // case (b)
+    BT tree2 = new Node(5, nil, new Node(7, new Node(6, nil, nil), nil));
+    // case (c)
+    BT tree3 = new Node(5, nil, new Node(7, new Node(6, nil, nil), new Node(20, nil, new Node(21, nil, nil))));
+    // case (d)
+    BT tree4 = new Node(5, new Node(4, nil, nil), new Node(7, new Node(6, nil, nil), new Node(20, new Node(18, nil, new Node(19,nil,nil)), new Node(22, nil, nil))));
 
-    System.out.print("\nDeletion test: ");
-    System.out.println(tree);
-    BT.delete(20, (Node) tree);
-    System.out.println(tree);
+    trees.add(tree1);
+    trees.add(tree2);
+    trees.add(tree3);
+    trees.add(tree4);
+
+    System.out.println(" ===================== ROOT NODE DELETION TEST ==================== ");
+    trees.forEach((tree) -> {
+      System.out.println("Before: " + tree);
+      BT.delete(5, (Node) tree);
+      System.out.println("After: " + tree);
+      System.out.println();
+    });
   }
 
   private static void printTreeTest() {

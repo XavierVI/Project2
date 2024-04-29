@@ -22,6 +22,12 @@ public class Nil extends BT {
     return Nil.getNil();
   }
 
+  public void setNum(int num) {}
+
+  public void setLeft(BT left) {}
+
+  public void setRight(BT right) {}
+
   public int height() {
     return -1;
   }
