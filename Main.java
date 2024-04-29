@@ -20,17 +20,22 @@ public class Main {
     BT tree3 = new Node(5, nil, new Node(7, new Node(6, nil, nil), new Node(20, nil, new Node(21, nil, nil))));
     // case (d)
     BT tree4 = new Node(5, new Node(4, nil, nil), new Node(7, new Node(6, nil, nil), new Node(20, new Node(18, nil, new Node(19,nil,nil)), new Node(22, nil, nil))));
+    BT tree5 = new Node(5, new Node(4, new Node(2, new Node(1, nil, nil), nil),nil), new Node(9, new Node(7, nil, new Node(8, nil, nil)), new Node(20, new Node(18, nil, new Node(19,nil,nil)), new Node(22, nil, nil))));
+    BT tree6 = new Node(9, new Node(4, new Node(3, new Node(2, nil, nil), nil), new Node(5,nil,nil)), nil);
+    BT tree7 = new Node(9, nil, nil);
 
     trees.add(tree1);
     trees.add(tree2);
     trees.add(tree3);
     trees.add(tree4);
+    trees.add(tree5);
+    trees.add(tree6);
+    trees.add(tree7);
 
-    System.out.println(" ===================== ROOT NODE DELETION TEST ==================== ");
     trees.forEach((tree) -> {
       System.out.println("Before: " + tree);
-      BT.delete(5, (Node) tree);
-      System.out.println("After: " + tree);
+      BT newTree = BT.delete(9, tree);
+      System.out.println("After: " + newTree);
       System.out.println();
     });
   }

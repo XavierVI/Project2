@@ -13,19 +13,4 @@
 #### [X] Write a static method in the BT class. It takes an array of integer values and creates a **binary search tree** by consecutively inserting these values to an empty tree (Nil). The method is required to return a reference of a Node object. You need to implement a helper function for inserting a new node to a binary search tree. 
 
 #### [???] Write a method to delete the node which has the given key. We assume that the binary tree is a binary search tree.
-**Notes and ideas**:
-- It is not specified the result has to be a balanced BT.
 
-
-## Description of each class
-#### Main
-Used to create BTs and run tests.
-
-#### BT
-The abstract class from the instructions. Inherited by both Node and Nil.
-
-#### Nil
-This is the class that uses the singleton pattern. It creates one instance of itself and that one instance is placed in a BT to represent NIL (or nothing is there).
-
-#### Node
-This class represents a node in a BT.
