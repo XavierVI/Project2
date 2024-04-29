@@ -10,19 +10,27 @@ public class Main {
   }
 
   private static void deletionTest() {
-    ArrayList<BT> trees = new ArrayList<BT>();
+    ArrayList<BT> trees = new ArrayList<>();
     BT nil = Nil.getNil();
-    // case (a)
-    BT tree1 = new Node(5, nil, new Node(7, nil, new Node(20, nil, nil)));
-    // case (b)
-    BT tree2 = new Node(5, nil, new Node(7, new Node(6, nil, nil), nil));
-    // case (c)
-    BT tree3 = new Node(5, nil, new Node(7, new Node(6, nil, nil), new Node(20, nil, new Node(21, nil, nil))));
-    // case (d)
-    BT tree4 = new Node(5, new Node(4, nil, nil), new Node(7, new Node(6, nil, nil), new Node(20, new Node(18, nil, new Node(19,nil,nil)), new Node(22, nil, nil))));
-    BT tree5 = new Node(5, new Node(4, new Node(2, new Node(1, nil, nil), nil),nil), new Node(9, new Node(7, nil, new Node(8, nil, nil)), new Node(20, new Node(18, nil, new Node(19,nil,nil)), new Node(22, nil, nil))));
-    BT tree6 = new Node(9, new Node(4, new Node(3, new Node(2, nil, nil), nil), new Node(5,nil,nil)), nil);
-    BT tree7 = new Node(9, nil, nil);
+   
+    BT tree1 = new Node(100, nil, nil);
+    BT tree2 = new Node(100, nil, new Node(101, nil, new Node(102,nil,nil)));
+    BT tree3 = new Node(100, new Node(99, new Node(98,nil,nil),nil), nil);
+    BT tree4 = new Node(100, 
+                new Node(50, new Node(40,nil,nil),new Node(60,nil,nil)), nil);
+    BT tree5 = new Node(100, nil, 
+                new Node(200, 
+                new Node(150, nil, new Node(170,nil,nil)), 
+                new Node(300,nil,nil)));
+    BT tree6 = new Node(100, 
+                new Node(50, new Node(40,nil,nil),new Node(60,nil,nil)), 
+                new Node(200, new Node(150, nil, new Node(170,nil,nil)), 
+                new Node(300,nil,nil)));
+    BT tree7 = new Node(50, nil, new Node(100, nil, new Node(102,nil,nil)));
+    BT tree8 = new Node(200, 
+                new Node(100, 
+                new Node(98,
+                new Node(97,nil,nil),new Node(99,nil,nil)),nil), nil);
 
     trees.add(tree1);
     trees.add(tree2);
@@ -30,11 +38,13 @@ public class Main {
     trees.add(tree4);
     trees.add(tree5);
     trees.add(tree6);
-    trees.add(tree7);
+    trees.add(tree7);    
+    trees.add(tree8);    
+
 
     trees.forEach((tree) -> {
       System.out.println("Before: " + tree);
-      BT newTree = BT.delete(9, tree);
+      BT newTree = BT.delete(100, tree);
       System.out.println("After: " + newTree);
       System.out.println();
     });

@@ -66,7 +66,7 @@ abstract class BT {
       int temp = newRoot.num();
       delete(temp, treeRoot);
       treeRoot.setNum(temp);
-      return newRoot;
+      return treeRoot;
     }
     
     if(z.left() instanceof Nil) {
