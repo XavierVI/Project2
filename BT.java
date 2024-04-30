@@ -68,8 +68,7 @@ abstract class BT {
       treeRoot.setNum(temp);
       return treeRoot;
     }
-    
-    if(z.left() instanceof Nil) {
+    else if(z.left() instanceof Nil) {
       transplant(z, z.right(), treeRoot);
     }
     else if(z.right() instanceof Nil) {

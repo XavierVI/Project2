@@ -12,25 +12,23 @@ public class Main {
   private static void deletionTest() {
     ArrayList<BT> trees = new ArrayList<>();
     BT nil = Nil.getNil();
+
+    BT leftTree = new Node(50, new Node(40,nil,nil),new Node(60,nil,nil));
+    BT rightTree = new Node(105, new Node(104, nil, nil), new Node(106,nil,nil));
+    BT divRightTree = new Node(200, new Node(150, nil, new Node(170,nil,nil)), 
+                      new Node(300,nil,nil));
+    BT divLeftTree = new Node(50, new Node(40, nil, new Node(45,nil,nil)),nil);
    
     BT tree1 = new Node(100, nil, nil);
     BT tree2 = new Node(100, nil, new Node(101, nil, new Node(102,nil,nil)));
-    BT tree3 = new Node(100, new Node(99, new Node(98,nil,nil),nil), nil);
-    BT tree4 = new Node(100, 
-                new Node(50, new Node(40,nil,nil),new Node(60,nil,nil)), nil);
-    BT tree5 = new Node(100, nil, 
-                new Node(200, 
-                new Node(150, nil, new Node(170,nil,nil)), 
-                new Node(300,nil,nil)));
-    BT tree6 = new Node(100, 
-                new Node(50, new Node(40,nil,nil),new Node(60,nil,nil)), 
-                new Node(200, new Node(150, nil, new Node(170,nil,nil)), 
-                new Node(300,nil,nil)));
+    BT tree3 = new Node(100, new Node(99, new Node(98,nil,nil),nil), nil);    
+    BT tree4 = new Node(100, leftTree, nil);
+    BT tree5 = new Node(100, nil, divRightTree);
+    BT tree6 = new Node(100, leftTree, divRightTree);
     BT tree7 = new Node(50, nil, new Node(100, nil, new Node(102,nil,nil)));
-    BT tree8 = new Node(200, 
-                new Node(100, 
-                new Node(98,
-                new Node(97,nil,nil),new Node(99,nil,nil)),nil), nil);
+    BT tree8 = new Node(200, new Node(100, leftTree,nil), nil);
+    BT tree9 = new Node(200, new Node(100,divLeftTree,rightTree),nil);
+    BT tree10 = new Node(200, new Node(100,leftTree,rightTree),nil);
 
     trees.add(tree1);
     trees.add(tree2);
@@ -38,8 +36,10 @@ public class Main {
     trees.add(tree4);
     trees.add(tree5);
     trees.add(tree6);
-    trees.add(tree7);    
-    trees.add(tree8);    
+    trees.add(tree7);
+    trees.add(tree8);
+    trees.add(tree9);
+    trees.add(tree10);
 
 
     trees.forEach((tree) -> {
