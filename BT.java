@@ -3,6 +3,8 @@ abstract class BT {
 
   public abstract boolean isBST(BT input, int min, int max);
 
+  public abstract BT delete(int key);
+
   /**
    * Builds a BT based on the given array
    * @param arr the array to build the tree from

@@ -45,7 +45,8 @@ public class Main {
 
     trees.forEach((tree) -> {
       System.out.println("Before: " + tree);
-      BT newTree = ((Node) tree).delete(100);
+
+      BT newTree = tree.delete(100);
       System.out.println("After: " + newTree);
       System.out.println();
     });

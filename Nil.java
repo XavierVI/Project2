@@ -18,6 +18,10 @@ public class Nil extends BT {
     return true;
   }
 
+  public BT delete(int key) {
+    return Nil.getNil();
+  }
+
   public String toString() {
     return "Nil";
   }
