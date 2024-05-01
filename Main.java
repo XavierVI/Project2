@@ -29,6 +29,7 @@ public class Main {
     BT tree8 = new Node(200, new Node(100, leftTree,nil), nil);
     BT tree9 = new Node(200, new Node(100,divLeftTree,rightTree),nil);
     BT tree10 = new Node(200, new Node(100,leftTree,rightTree),nil);
+    BT tree11 = new Node(200, new Node(100,nil,nil),nil);
 
     trees.add(tree1);
     trees.add(tree2);
@@ -40,11 +41,11 @@ public class Main {
     trees.add(tree8);
     trees.add(tree9);
     trees.add(tree10);
-
+    trees.add(tree11);
 
     trees.forEach((tree) -> {
       System.out.println("Before: " + tree);
-      BT newTree = BT.delete(100, tree);
+      BT newTree = ((Node) tree).delete(100);
       System.out.println("After: " + newTree);
       System.out.println();
     });

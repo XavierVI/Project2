@@ -16,36 +16,6 @@ public class Node extends BT {
     return (leftHeight < rightHeight ? rightHeight : leftHeight) + 1;
   }
 
-  @Override
-  public int num() {
-    return num;
-  }
-
-  @Override
-  public BT left() {
-    return left;
-  }
-
-  @Override
-  public BT right() {
-    return right;
-  }
-
-  @Override
-  public void setNum(int num) {
-    this.num = num;
-  }
-
-  @Override
-  public void setLeft(BT left) {
-    this.left = left;
-  }
-
-  @Override
-  public void setRight(BT right) {
-    this.right = right;
-  }
-
   public boolean isBST(BT input, int min, int max) {
     if (input == null || input instanceof Nil) {
       return true; // nil case
@@ -86,6 +56,112 @@ public class Node extends BT {
       // System.out.println("-----------------\n");
       return false;
     }
+  }
+
+  public BT delete(int key) {
+    BT z = search(key,this);
+    Node zNode;
+    
+    if(z instanceof Nil) return this;
+    else if(this.height() == 0) return Nil.getNil();    
+    else if(((Node) z).num == this.num) {
+      zNode = (Node) z;
+      BT newRoot;
+      if(zNode.right instanceof Nil) newRoot = (Node) treeMax(zNode.left);
+      else newRoot = (Node) treeMin(zNode.right);
+      int temp = ((Node) newRoot).num;
+      this.delete(temp);
+      this.num = temp;
+      return this;
+    }
+    else if(((Node) z).left instanceof Nil) {
+      zNode = (Node) z;
+      transplant(z, zNode.right);
+    }
+    else if(((Node) z).right instanceof Nil) {
+      zNode = (Node) z;
+      transplant(z, zNode.left);
+    }
+    else {
+      zNode = (Node) z;
+      Node y = (Node) treeMin(zNode.right);
+      Node zRight = (Node) zNode.right;
+      Node zLeft = (Node) zNode.left;
+      if(y.num != zRight.num) {
+        transplant(y,y.right);
+        y.right = zRight;
+      }
+      transplant(z, y);
+      y.left = zLeft;
+    }
+    return this;
+  }
+
+  public void transplant(BT u, BT v) {
+    Node uNode = (Node) u;
+    Node uParent = (Node) findParent(uNode.num, this);
+   
+    if(uParent.left instanceof Node) {
+      Node uParentLeft = (Node) uParent.left;
+      if(uNode.num == uParentLeft.num) {
+        uParent.left = v;
+      }
+      else {
+        uParent.right = v;
+      }
+    }
+    else if(uParent.right instanceof Node) {
+      Node uParentRight = (Node) uParent.right;
+      if(uNode.num == uParentRight.num) {
+        uParent.right = v;
+      }
+      else {
+        uParent.left = v;
+      }
+    }
+  }
+
+  public BT treeMax(BT root) {
+    Node rootNode = (Node) root;
+    if(rootNode.right instanceof Nil) return root;
+    return treeMax(rootNode.right);
+  }
+
+  public BT treeMin(BT root) {
+    Node rootNode = (Node) root;
+    if(rootNode.left instanceof Nil) return root;
+    return treeMin(rootNode.left);
+  }
+
+  public BT search(int key, BT root) {
+    if(root instanceof Nil) return Nil.getNil();
+    else {
+      Node rootNode = (Node) root;
+      if(rootNode.num == key) return root;
+      else if(rootNode.num < key) return search(key, rootNode.right);
+      else return search(key, rootNode.left);
+    }
+  }
+
+  public BT findParent(int key, BT root) {
+    Node rootNode;
+    Node rootNodeLeft;
+    Node rootNodeRight;
+    if(root instanceof Nil) return Nil.getNil();
+    rootNode = (Node) root;
+
+    if(!(rootNode.left instanceof Nil)) {
+      rootNodeLeft = (Node) rootNode.left;
+      if(rootNodeLeft.num == key) return root;
+      else if(rootNode.num > key) return findParent(key, rootNodeLeft);
+    }
+    if(!(rootNode.right instanceof Nil)) {
+      rootNodeRight = (Node) rootNode.right;
+      if(rootNodeRight.num == key) return root;
+      else if(rootNode.num < key) return findParent(key, rootNodeRight);
+    }
+
+    return Nil.getNil();
   }
 
   @Override
