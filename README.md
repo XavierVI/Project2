@@ -1,16 +1,24 @@
-# Tasks 👄
-#### [X] Override the method toString in the Node class, such that the structure of the binary tree can be translated to the following string format: **Node(num, string_of_left_subtree, string_of_right_subtree)**. For example, the tree showed above is translated to the string **Node(3, Node(1, Nil, Node(4, Nil, Nil)), Node(2, Nil, Nil))**.
-- Already implemented in the Node class using recursion.
+# Project 2 - Singleton Pattern & Binary Trees
 
-#### [x] Add an abstract method isBST to the BT class and override it in the subclasses, it verifies if the **binary tree** is a **binary search tree**. Restrictions: You are not allowed to use loops or checking if a reference is null or not.
-**Notes and ideas**:
-- A binary search tree is a binary tree where each node and it's children following this property: left.num < root.num < right.num.
-- Use a modified version of pre-order-traversal.
-  - The method will check the values of the nodes children and return false if they don't satisfy the BST property (left.num < root.num < right.num).
-  - If both children are the **Nil** node, it will return true.
-  - Otherwise, it will recursively call itself on the left and right children.
+## Binary Tree Implementation
 
-#### [X] Write a static method in the BT class. It takes an array of integer values and creates a **binary search tree** by consecutively inserting these values to an empty tree (Nil). The method is required to return a reference of a Node object. You need to implement a helper function for inserting a new node to a binary search tree. 
+### BT Class
+- height() - Calculate the height of a tree 
+- isBST() - Verify a tree follows the BST theorem 
+- delete() - deletes a node with a given key
+- buildTree() - build a valid BST with a given input of an array of integers 
+- insert() - creates a new node with the given value at the correct position in the BST
 
-#### [X] Write a method to delete the node which has the given key. We assume that the binary tree is a binary search tree.
+### Nil Class
+- class used to represetn an empty tree, implements multiple BT methods, and uses the singleton pattern to ensure only one instance of Nil exists
 
+### Node Class 
+- implements BT
+- toString() - override toString to give proper formatting 
+- treeMax() - find the maximum value in the tree 
+- treeMin() - find the minimum value in the tree 
+- search() - searches for the node with a given key in the tree
+- findParent() - finds the parent of the node of a given key in the tree
+
+### Main Class
+The main class is used to run the tests to verify all the above methods are working properly
