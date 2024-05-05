@@ -1,5 +1,12 @@
 # Project 2 - Singleton Pattern & Binary Trees
 
+## Usage
+To print a previously created tree, you can call `tree.toString()`. The overridden toShow method will give you a legible output to understand the formatting of the tree. 
+
+To verify a tree is a BST, you can call `tree.isBST(tree, Integer,MIN_VALUE, Integer.MAX_VALUE)`
+. It will recursively check every node in the tree to verify it satisfies the BST theorem. The function will return either `True` or `False`.
+
+To delete a node form a tree, you can call `tree.delete(100)` to delete the node with key 100.
 ## Binary Tree Implementation
 
 ### BT Class
